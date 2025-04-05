@@ -1,22 +1,44 @@
 import { useState } from "react";
 import React from "react";
 import { FaGoogle, FaApple } from "react-icons/fa";
+import axios from 'axios';
 import plantBg from '../assets/chris-lee-70l1tDAI6rM-unsplash1.png'; // Adjust the path
 
+const url = "http://localhost:3000";
 export default function Signup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [role, setRole] = useState("");
 
+    const handleSubmit = async(e) => {
+        e.preventDefault(); // prevent page reload on form submit
+        try {
+            const response = await axios.post(`${url}/user/signUp`,{
+                "name":name,
+                "email":email,
+                "password":email,
+                "role":role,
+            });
+            if(response.status === 201){
+                console.log("Signup successful:" ,response.data.message);
+            }
+            else{
+                console.error("Signup failed:", response.data.message)
+            }
 
+        }
+        catch(error){
+            console.error("Signup failed:", error.response?.data || error.message)
+        }
+    }
     return (
         <div className="flex w-screen h-screen bg-white">
             <div className="w-1/2 bg-white flex flex-col justify-center items-center gap-6 p-7 md:flex-row md:gap-8 rounded-2xl ">
                 {/*<div className="flex flex-col items-center m-md:items-start">*/}
                 <div className="w-full max-w-md space-y-2">
                     <span className="text-3xl text-black font-serif font-bold mb-8">Get Started Now</span>
-                    <form className="w- max-w-md text-left">
+                    <form className="w- max-w-md text-left" onSubmit={handleSubmit}>
                         <div className="mt-8 mb-4">
                             <label className="block text-medium text-black font-small mb-1">Name</label>
                             <input
@@ -73,8 +95,7 @@ export default function Signup() {
 
                         <button
                             type="submit"
-                            className="w-full bg-[#3A5B22] text-black py-2 rounded-md font-semibold hover:bg-green-800 transition"
-                        >
+                            className="w-full bg-[#3A5B22] text-black py-2 rounded-md font-semibold hover:bg-green-800 transition">
                             Signup
                         </button>
                     </form>
