@@ -4,7 +4,11 @@ import { FaGoogle, FaApple } from "react-icons/fa";
 import plantBg from '../assets/chris-lee-70l1tDAI6rM-unsplash1.png'; // Adjust the path
 
 export default function Signup() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [role, setRole] = useState("");
+
 
     return (
         <div className="flex w-screen h-screen bg-white">
@@ -18,6 +22,8 @@ export default function Signup() {
                             <input
                                 type="text"
                                 placeholder="Enter your name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 className="w-full text-black px-3 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
                         </div>
@@ -27,6 +33,8 @@ export default function Signup() {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 className="w-full text-black px-3 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
                         </div>
@@ -36,6 +44,8 @@ export default function Signup() {
                             <input
                                 type="password"
                                 placeholder="Enter password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 className="w-full text-black px-3 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
                         </div>
