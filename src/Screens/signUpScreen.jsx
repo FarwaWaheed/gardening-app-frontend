@@ -6,19 +6,23 @@ import plantBg from '../assets/chris-lee-70l1tDAI6rM-unsplash1.png'; // Adjust t
 
 const url = "http://localhost:3000";
 export default function Signup() {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [role, setRole] = useState("");
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [role, setRole] = useState('');
 
     const handleSubmit = async(e) => {
+        const data ={
+            name, email, password, role
+        }
+        console.log(data)
         e.preventDefault(); // prevent page reload on form submit
         try {
             const response = await axios.post(`${url}/user/signUp`,{
-                "name":name,
-                "email":email,
-                "password":email,
-                "role":role,
+                name,
+                email,
+                password,
+                role
             });
             if(response.status === 201){
                 console.log("Signup successful:" ,response.data.message);
@@ -45,7 +49,7 @@ export default function Signup() {
                                 type="text"
                                 placeholder="Enter your name"
                                 value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={e => setName(e.target.value)}
                                 className="w-full text-black px-3 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
                         </div>
