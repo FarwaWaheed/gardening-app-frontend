@@ -99,7 +99,7 @@ export default function Signup() {
 
                         <button
                             type="submit"
-                            className="w-full bg-[#3A5B22] text-black py-2 rounded-md font-semibold hover:bg-green-800 transition">
+                            className="w-full bg-lime-700 text-white py-2 rounded-md font-semibold hover:bg-lime-800 transition">
                             Signup
                         </button>
                     </form>
