@@ -10,7 +10,7 @@ export default function Navbar() {
         </div>
         <div className="flex gap-10">
           <a href="/home" className="text-gray-700 hover:text-green-700">Home</a>
-          <a href="#" className="text-gray-700 hover:text-green-700">My Garden</a>
+          <a href="/home/my-garden" className="text-gray-700 hover:text-green-700">My Garden</a>
           <a href="#" className="text-gray-700 hover:text-green-700">Notifications</a>
           <a href="#" className="text-gray-700 hover:text-green-700">Join Community</a>
         </div>
