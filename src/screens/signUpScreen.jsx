@@ -2,9 +2,9 @@ import { useState } from "react";
 import React from "react";
 import { FaGoogle, FaApple } from "react-icons/fa";
 import axios from 'axios';
-import plantBg from '../assets/chris-lee-70l1tDAI6rM-unsplash1.png'; // Adjust the path
-
+import plantBg from '../assets/sign.png'; // Adjust the path
 const url = "http://localhost:5000";
+
 export default function Signup() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
