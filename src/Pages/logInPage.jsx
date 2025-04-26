@@ -1,38 +1,51 @@
 import { useState } from "react";
-import axios from 'axios';
 import plantBg from '../assets/sign.png'; 
-import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import { logInUser } from "../api/userApis";
+import {Alert, AlertTitle} from '@mui/material';
 
-const url = "http://localhost:5000"; 
+
 
 export default function LogIn() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+    
         try {
-            const response = await axios.post(`${url}/user/logIn`, { email, password });
-            if (response.status === 200) {
-                console.log("Login successful:", response.data.message);
-            } else {
-                console.error("Login failed:", response.data.message);
-            }
-        } catch (error) {
-            console.error("Login failed:", error.response?.data || error.message);
+          const resData = await logInUser({ email, password });
+          console.log("Login success:", resData);
+    
+          if (resData.user) {
+            localStorage.setItem('userRole', resData.user.role);
+            localStorage.setItem('userName', resData.user.name);
+            localStorage.setItem('userId', resData.user._id);
+            navigate('/home');
+          } else {
+            alert('Login failed. No user returned.');
+          }
+        } catch (err) {
+          console.error("Login failed:", err.message);
+          alert("Invalid email or password.");
         }
-    };
+      };
+      
 
     return (
         <div className="flex w-full h-screen">
             {/* Left Form Section */}
             <div className="w-3/5 flex flex-col justify-center items-center px-16">
                 <div className="w-full max-w-sm">
+                    
                     <h2 className="text-3xl font-semibold text-black mb-8">Welcome Back!</h2>
-                    <p className="text-sm text-gray-600 mb-6">
-                        Enter your credentials to access your account
-                    </p>
+                    <Alert severity="success" style={{ marginBottom : '40px' }}>
+                    <AlertTitle>Success</AlertTitle>
+                    You have successfully created Plantopia account.
+                    Enter Your Credentials to Get Started!
+                    </Alert>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
@@ -72,13 +85,13 @@ export default function LogIn() {
                             <label>Remember for 30 days</label>
                         </div>
                         
-                        <Link to={'/home'}>
+                        
                             <button
                                 type="submit"
                                 className="w-full bg-[#3A5B22] hover:bg-green-800 text-white py-2 rounded-md font-semibold transition duration-300">
                                 Log In
                             </button>
-                        </Link>
+                       
                     </form>
 
                     {/* OR Divider */}

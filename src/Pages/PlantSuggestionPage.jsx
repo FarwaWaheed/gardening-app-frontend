@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import axios from 'axios';
+import {suggestPlants} from '../api/plantApis';
 import PlantCard from '../components/PlantCard';
+import BackButton from '../components/BackButton';
 
 export default function PlantSuggestionPage() {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ export default function PlantSuggestionPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/plant/suggestions', formData);
+      const res = await suggestPlants (formData);
       setSuggestions(res.data);
     } catch (error) {
       console.error('Error fetching suggestions:', error);
@@ -41,6 +42,8 @@ export default function PlantSuggestionPage() {
 
       <main className="flex-grow px-4 py-10 max-w-4xl mx-auto">
         <h1 className="text-2xl font-semibold mb-6 text-center text-green-700">Find Plants for Your Conditions</h1>
+
+        <BackButton/>
 
         <form onSubmit={handleSuggest} className="bg-white p-6 rounded-xl shadow space-y-4">
 

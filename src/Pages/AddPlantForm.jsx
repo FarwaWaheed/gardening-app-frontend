@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import validatePlantForm from '../utils/validatePlantForm';
 import PlantForm from '../components/PlantForm';
 import { addPlant } from '../api/plantApis';
+import BackButton from '../components/BackButton';
 
 
 export default function AddPlantForm() {
@@ -46,9 +47,7 @@ export default function AddPlantForm() {
       const response = await addPlant(formData);
       console.log('Plant saved:', response.data);
       alert('Plant added successfully!');
-  
-      // Navigate back to the category page based on selected category
-      navigate('/home');
+
     } catch (error) {
       console.error('Error saving plant:', error);
       alert('Something went wrong while saving the plant.');
@@ -63,6 +62,7 @@ export default function AddPlantForm() {
 
       <main className="flex-grow px-4 py-8 w-full max-w-4xl lg:px-12 mx-auto">
             <h2 className="text-2xl font-semibold mb-6 text-center text-green-700">Add a New Plant</h2>
+            <BackButton/>
           <PlantForm
           formData={formData}
           errors={errors}
@@ -71,6 +71,7 @@ export default function AddPlantForm() {
           loading={loading}
           />
       </main>
+      
 
       <Footer />
     </div>

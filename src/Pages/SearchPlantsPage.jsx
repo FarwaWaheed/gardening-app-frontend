@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { getAllPlants, searchPlants } from '../api/plantApis';
 import { FiSearch } from 'react-icons/fi';
 import PlantCard from '../components/PlantCard';
+import BackButton from '../components/BackButton';
 
 
 export default function SearchPlantsPage() {
@@ -64,6 +65,8 @@ export default function SearchPlantsPage() {
             </button>
           </div>
         </div>
+
+        <BackButton/>
 
         {/* Plant cards grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 place-items-center">

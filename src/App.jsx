@@ -10,6 +10,9 @@ import UpdatePlantForm from './Pages/UpdatePlantForm';
 import NotFound from './Pages/NotFound';
 import SearchPlantsPage from './Pages/SearchPlantsPage'
 import PlantSuggestionPage from './Pages/PlantSuggestionPage';
+import AdminPanel from './Pages/AdminPanel';
+import SupervisorPanel from './Pages/SupervisorPanel';
+import UpdateUserForm from './Pages/UpdateUserForm';
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
           <Route path="/plant/update/:id" element={<UpdatePlantForm />} />
           <Route path="/plant/search" element={<SearchPlantsPage />} />
           <Route path="/plant/suggestions" element={<PlantSuggestionPage />} />
+          <Route path="/home/admin-panel" element={<AdminPanel />} />
+          <Route path="/home/supervisor-panel" element={<SupervisorPanel />} />
+          <Route path="/user/updateUser/:id" element={<UpdateUserForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
