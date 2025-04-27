@@ -32,6 +32,8 @@ export default function Navbar() {
         {userRole === 'admin' && (
           <Link to="/home/admin-panel" className="text-gray-700 hover:text-green-700">Admin Panel</Link>
         )}
+        <Link to="/plant/suggestions" className="text-gray-700 hover:text-green-700">Plants Recommendations</Link>
+        
         <Link to="/home/notifications" className="text-gray-700 hover:text-green-700">Notifications</Link>
         <Link to="/home/community" className="text-gray-700 hover:text-green-700">Join Community</Link>
       </div>
