@@ -13,6 +13,8 @@ import PlantSuggestionPage from './Pages/PlantSuggestionPage';
 import AdminPanel from './Pages/AdminPanel';
 import SupervisorPanel from './Pages/SupervisorPanel';
 import UpdateUserForm from './Pages/UpdateUserForm';
+import GardenPage from './Pages/GardenPage.jsx';
+
 
 function App() {
   return (
@@ -25,7 +27,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/home/category/:category" element={<CategoryPage/>}/>
           <Route path="/home/category/:category/:id" element={<DetailedPlantPage/>}/>
-          <Route path="/home/my-garden" element={<GardenPage/>}/>
+          <Route path="/home/mygarden" element={<GardenPage/>}/>
           <Route path="/plant/addplant" element={<AddPlantForm />} />
           <Route path="/plant/update/:id" element={<UpdatePlantForm />} />
           <Route path="/plant/search" element={<SearchPlantsPage />} />
