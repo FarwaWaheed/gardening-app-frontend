@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../assets/removebg.png';
+import navLogo from '../assets/navLogo.png';
 
 export default function Navbar() {
   const userRole = localStorage.getItem('userRole');
@@ -17,14 +17,14 @@ export default function Navbar() {
     <nav className="flex justify-between items-center px-8 py-4 shadow-xl bg-white">
       <div className="flex items-center">
         <Link to="/home">
-          <img src={logo} alt="Plantopia Logo" className="h-18 max-h-18 w-[180px] scale-110 object-cover" />
+          <img src={navLogo} alt="Plantopia Logo" className="h-18 max-h-18 w-[180px] scale-110 object-cover" />
         </Link>
       </div>
 
       <div className="flex gap-10">
         <Link to="/home" className="text-gray-700 hover:text-green-700">Home</Link>
         {(userRole === 'gardener' || userRole === 'home-owner') && (
-          <Link to="/home/mygarden" className="text-gray-700 hover:text-green-700">My Garden</Link>
+          <Link to="/home/my-garden" className="text-gray-700 hover:text-green-700">My Garden</Link>
         )}
         {userRole === 'supervisor' && (
           <Link to="/home/supervisor-panel" className="text-gray-700 hover:text-green-700">Supervisor Panel</Link>

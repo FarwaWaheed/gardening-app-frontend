@@ -13,6 +13,10 @@ import PlantSuggestionPage from './Pages/PlantSuggestionPage';
 import AdminPanel from './Pages/AdminPanel';
 import SupervisorPanel from './Pages/SupervisorPanel';
 import UpdateUserForm from './Pages/UpdateUserForm';
+import GardenPage from './Pages/GardenPage';
+import DiseaseDiagnosisQuiz from './Pages/DiseaseDiagnosisQuiz.jsx'
+import PlantIdentificationGuide from './Pages/PlantIdentificationPage.jsx';
+
 
 function App() {
   return (
@@ -33,6 +37,9 @@ function App() {
           <Route path="/home/admin-panel" element={<AdminPanel />} />
           <Route path="/home/supervisor-panel" element={<SupervisorPanel />} />
           <Route path="/user/updateUser/:id" element={<UpdateUserForm />} />
+          <Route path="/home/disease-diagnosis-quiz" element={<DiseaseDiagnosisQuiz />} />
+          <Route path="/home/plant-identification-guide" element={<PlantIdentificationGuide />} />
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

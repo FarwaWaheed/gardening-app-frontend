@@ -1,4 +1,4 @@
-import plant from '../assets/Morefeature4.jpg';
+import ValueBannerImg from '../assets/ValueBanner.jpg';
 import {Link} from 'react-router-dom';
 
 export default function ValueBanner() {
@@ -6,7 +6,7 @@ export default function ValueBanner() {
     <section
       className="relative bg-cover bg-center text-white py-32"
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${plant})`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${ValueBannerImg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

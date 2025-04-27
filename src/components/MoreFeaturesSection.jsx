@@ -1,19 +1,37 @@
 import FeatureCard from './FeatureCard';
-import Morefeature1 from '../assets/Morefeature1.jpg';
-import Morefeature4 from '../assets/Morefeature4.jpg';
+import plantIdentification from '../assets/MoreFeaturesImages/plantIdentification.jpg';
+import plantDisease from '../assets/MoreFeaturesImages/plantDisease.jpg';
+import gardenPlanner from '../assets/MoreFeaturesImages/gardenPlanner.jpg';
 
 
 const features = [
+  
   {
-    title: 'The Ultimate Guide to planning, nurturing, and maintaining a thriving garden',
+    title: 'Plant identification guides',
+    description: 'Observe certain characteristics of your plant and master the art of plant identification.',
     button: 'Dive In',
-    image: Morefeature1
+    image: plantIdentification,
+    link: '/home/plant-identification-guide',
+    isInternal: true,
   },
   {
-    title: 'Plant identification guides, garden planners, and disease diagnosis assistance.',
-    button: 'Discover Now',
-    image: Morefeature4
-  }
+    title: 'Disease Diagnosis assistance!',
+    description: 'Learn how to spot, identify, and treat common plant diseases with fun and ease',
+    button: 'Take the Quiz!',
+    image: plantDisease,
+    link: '/home/disease-diagnosis-quiz',
+    isInternal: true
+  },
+  {
+    title: 'The Ultimate Guide to Plan Gardens',
+    description: 'Planning, nurturing, and maintaining a thriving garden',
+    button: 'Learn More',
+    image: gardenPlanner,
+    link: 'https://www.gardendesignacademy.co.uk/blog/how-to-plan-your-garden-layout--a-step-by-step-guide',
+    isInternal: false
+  },
+  
+  
 ];
 
 export default function MoreFeaturesSection() {
@@ -21,10 +39,11 @@ export default function MoreFeaturesSection() {
     <section className="py-18 px-4 text-center">
       <h2 className="text-xl font-semibold mb-6">More Features</h2>
       <div className="flex flex-wrap justify-center gap-x-8">
+    
         {features.map((feat, idx) => (
           <FeatureCard key={idx} {...feat} />
         ))}
-      </div>
+     </div>
     </section>
   );
 }
