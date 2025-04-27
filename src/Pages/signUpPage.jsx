@@ -1,30 +1,43 @@
 import { useState } from "react";
-import axios from 'axios';
 import plantBg from '../assets/sign.png'; 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { signUpUser } from "../api/userApis";
+import validateUserForm from '../utils/validateUserForm';
 
-const url = "http://localhost:5000";
+
+
 
 export default function SignUp() {
+    const navigate = useNavigate();
+    const [formErrors, setFormErrors] = useState({});
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('');
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = { name, email, password, role };
+
+        const errors = validateUserForm( data , 'signup');
+
+        if (Object.keys(errors).length > 0) {
+            setFormErrors(errors);
+            return;
+          }
+      
         try {
-            const response = await axios.post(`${url}/user/signUp`, data);
-            if (response.status === 201) {
-                console.log("Signup successful:", response.data.message);
-            } else {
-                console.error("Signup failed:", response.data.message);
-            }
-        } catch (error) {
-            console.error("Signup failed:", error.response?.data || error.message);
+          const resData = await signUpUser(data);
+          console.log("Signup success:", resData);
+          localStorage.setItem('userRole', resData.user.role);
+          localStorage.setItem('userName', resData.user.name);
+          navigate('/login');
+        } catch (err) {
+          console.error("Signup failed:", err.message);
         }
-    };
+      };
 
     return (
         <div className="flex w-full h-screen">
@@ -42,6 +55,7 @@ export default function SignUp() {
                                 placeholder="Enter your name"
                                 className="mt-1 w-full border px-3 py-2 rounded-md bg-white text-black focus:ring-2 focus:ring-green-500 outline-none"
                             />
+                            {formErrors.name && <p className="text-red-500">{formErrors.name}</p>}
                         </div>
 
                         <div>
@@ -53,6 +67,7 @@ export default function SignUp() {
                                 placeholder="Enter your email"
                                 className="mt-1 w-full border px-3 py-2 rounded-md bg-white text-black focus:ring-2 focus:ring-green-500 outline-none"
                             />
+                            {formErrors.email && <p className="text-red-500">{formErrors.email}</p>}
                         </div>
 
                         <div>
@@ -64,6 +79,7 @@ export default function SignUp() {
                                 placeholder="Enter password"
                                 className="mt-1 w-full border px-3 py-2 rounded-md bg-white text-black focus:ring-2 focus:ring-green-500 outline-none"
                             />
+                            {formErrors.password && <p className="text-red-500">{formErrors.password}</p>}
                         </div>
 
                         <div>
@@ -76,8 +92,10 @@ export default function SignUp() {
                                 <option value="">Select a role</option>
                                 <option value="gardener">Gardener</option>
                                 <option value="home-owner">Home Owner</option>
+                                <option value="supervisor">Supervisor</option>
                                 <option value="admin">Admin</option>
                             </select>
+                            {formErrors.role && <p className="text-red-500">{formErrors.role}</p>}
                         </div>
 
                         <div className="flex items-center space-x-2 text-sm text-black">
@@ -85,13 +103,13 @@ export default function SignUp() {
                             <label>I agree to the <span className="font-medium underline cursor-pointer">terms & policy</span></label>
                         </div>
                         
-                        <Link to={'/home'}>
+                       
                             <button
                                 type="submit"
                                 className="w-full bg-[#3A5B22] hover:bg-green-800 text-white py-2 rounded-md font-semibold transition duration-300">
                                 Signup
                             </button>
-                        </Link>
+                        
                     </form>
 
                     {/* OR Divider */}

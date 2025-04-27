@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PlantForm from '../components/PlantForm';
 import validatePlantForm from '../utils/validatePlantForm';
+import BackButton from '../components/BackButton';
 
 const UpdatePlantForm = () => {
   const {  id } = useParams();
@@ -42,7 +43,7 @@ const UpdatePlantForm = () => {
     try {
       await updatePlant(id, formData);
       alert('Plant updated successfully!');
-      navigate(`/home`);
+      
     } catch (error) {
       console.error('Error updating plant:', error);
       alert('Failed to update plant.');
@@ -58,6 +59,7 @@ const UpdatePlantForm = () => {
       <Navbar />
       <main className="flex-grow px-4 py-8 w-full max-w-4xl lg:px-12 mx-auto">
         <h2 className="text-2xl font-semibold mb-6 text-center text-green-700">Update Plant</h2>
+        <BackButton/>
         <PlantForm
           formData={formData}
           errors={errors}
