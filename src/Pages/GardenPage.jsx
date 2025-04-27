@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { getPlantsByCategory } from '../api/plantApis';
+import { getGardenPlants } from '../api/gardenApis';
 import PlantCard from '../components/PlantCard';
 import { Link, useParams } from 'react-router-dom';
 
@@ -10,20 +10,22 @@ export default function GardenPage() {
     const [plants, setPlants] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const userId = localStorage.getItem('userId');
     useEffect(() => {
         const fetchPlants  = async () => {
             try {
-                const res = await getPlantsByCategory(category);
-                setPlants(res.data);
+                const res = await getGardenPlants(userId);
+                if(res.plants.length !==0 ){
+                    setPlants(res.plants);
+                }
             } catch (error) {
-                console.error('Error fetching vegetable plants:', error);
+                console.error('Error fetching plants:', error);
             } finally {
                 setLoading(false);
             }
         };
-
         fetchPlants();
-    }, );
+    },[] );
 
     if (loading) return <p className="text-center">Loading...</p>;
 
@@ -35,7 +37,7 @@ export default function GardenPage() {
                 <h1 className="text-center text-xl font-medium text-gray-800 mb-6">Plants</h1>
 
                 {/* Add New Plant Button */}
-                <Link to="/plant/addplant">
+                <Link to={'/plant/search'}>
                     <div className="flex justify-center mb-8">
                         <button className="bg-green-600 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-green-700 transition">
                             + Add a New Plant
