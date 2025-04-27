@@ -117,7 +117,7 @@ export default function DetailedPlantPage() {
                 Back to {plant.category} category
             </button>
           </div>
-
+          {/*  Update Plant Button*/}
           <Link
             to={`/plant/update/${plant._id}`}
              >
@@ -130,7 +130,15 @@ export default function DetailedPlantPage() {
               </button>
             </div>
           </Link>
+          {/*  Add Plant to My Garden Button*/}
+              <div className="flex justify-center mt-6 mb-6">
+                  <button
+                      className="flex items-center gap-1 border border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-colors px-4 py-2 rounded-full text-sm font-medium"
+                  >
 
+                      Add {plant.name} to My Garden
+                  </button>
+              </div>
           <Link
             to={`/plant/delete/${plant._id}`} 
              >
