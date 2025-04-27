@@ -4,9 +4,7 @@ import Footer from '../components/Footer';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import {  getPlantById } from '../api/plantApis';
-
-
-
+import { addPlant }  from '../api/gardenApis';
 
 export default function DetailedPlantPage() {
     const { category, id } = useParams();
@@ -14,6 +12,8 @@ export default function DetailedPlantPage() {
     const [plant, setPlant] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const userId = localStorage.getItem('userId');
+    console.log(userId)
     useEffect(() => {
       const fetchPlant = async () => {
         try {
@@ -28,7 +28,16 @@ export default function DetailedPlantPage() {
   
       fetchPlant();
     }, [id]);
-
+    const handlePlantAdd = async (e) => {
+        e.preventDefault();
+        try {
+            const resData = await addPlant( userId, id );
+            console.log("Plant added successfully!", resData);
+            navigate('/home/mygarden');
+        } catch (err) {
+            console.error("Request failed:", err.message);
+        }
+    };
 
       if (loading) {
         return (
@@ -88,9 +97,11 @@ export default function DetailedPlantPage() {
           </div>
         </div>
           {/*  Add Plant to My Garden Button*/}
+
           <div className="flex justify-center mt-6 mb-6">
               <button
                   className="flex items-center gap-1 border border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-colors px-4 py-2 rounded-full text-sm font-medium"
+                  onClick={handlePlantAdd}
               >
 
                   Add {plant.name} to My Garden
