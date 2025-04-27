@@ -1,4 +1,4 @@
-import logo from '../assets/whitelogo.png';
+import footerLogo from '../assets/footerLogo.png';
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 
@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
         {/* Logo + CTA */}
         <div className="flex flex-col items-start ">
-          <img src={logo} alt="Plantopia Logo" className="h-18 max-h-18 w-[140px] object-cover" />
+          <img src={footerLogo} alt="Plantopia Logo" className="h-18 max-h-18 w-[140px] object-cover" />
           <p className="mb-4"> Plant, Care, Connect.</p>
           <button className="bg-white text-green-700 px-5 py-2 rounded-full font-semibold shadow hover:shadow-md hover:bg-green-100 transition">
             Get in Touch!
