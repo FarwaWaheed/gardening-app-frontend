@@ -1,4 +1,4 @@
-import ValueBannerImg from '../assets/ValueBanner.jpg';
+import ValueBannerImg from '../assets/valueBanner.jpg';
 import {Link} from 'react-router-dom';
 
 export default function ValueBanner() {

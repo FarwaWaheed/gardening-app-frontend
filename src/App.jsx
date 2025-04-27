@@ -13,13 +13,9 @@ import PlantSuggestionPage from './Pages/PlantSuggestionPage';
 import AdminPanel from './Pages/AdminPanel';
 import SupervisorPanel from './Pages/SupervisorPanel';
 import UpdateUserForm from './Pages/UpdateUserForm';
-<<<<<<< HEAD
 import GardenPage from './Pages/GardenPage';
-import DiseaseDiagnosisQuiz from './Pages/DiseaseDiagnosisQuiz.jsx'
-import PlantIdentificationGuide from './Pages/PlantIdentificationPage.jsx';
-=======
-import GardenPage from './Pages/GardenPage.jsx';
->>>>>>> f0e2feabaeb5dbc5afbae8deddccff85ce5c73e1
+import DiseaseDiagnosisQuiz from './Pages/DiseaseDiagnosisQuiz';
+import PlantIdentificationGuide from './Pages/PlantIdentificationPage';
 
 
 function App() {
