@@ -1,19 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import {  getPlantById } from '../api/plantApis';
-import { addPlant }  from '../api/gardenApis';
+import { addPlant, deleteGardenPlants }  from '../api/gardenApis';
 
 export default function DetailedPlantPage() {
-    const { category, id } = useParams();
+    const { id } = useParams();
     const navigate = useNavigate();
     const [plant, setPlant] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const userId = localStorage.getItem('userId');
-    console.log(userId)
+    let userPlants = localStorage.getItem('plants');
+    userPlants = userPlants ? JSON.parse(userPlants) : [];
+    let plantId = {id: id};
+    console.log(userPlants)
     useEffect(() => {
       const fetchPlant = async () => {
         try {
@@ -32,7 +35,25 @@ export default function DetailedPlantPage() {
         e.preventDefault();
         try {
             const resData = await addPlant( userId, id );
+            userPlants.push(plantId);
+            localStorage.setItem("plants",JSON.stringify(userPlants))
+
             console.log("Plant added successfully!", resData);
+            navigate('/home/mygarden');
+        } catch (err) {
+            console.error("Request failed:", err.message);
+        }
+    };
+    const handlePlantRemove = async (e) => {
+        e.preventDefault();
+        try {
+            const resData = await deleteGardenPlants( userId, id );
+            const index = userPlants.findIndex(plant => plant.id === plantId.id);
+            if (index > -1) { // only splice array when item is found
+                userPlants.splice(index, 1); // 2nd parameter means remove one item only
+            }
+            localStorage.setItem("plants", JSON.stringify(userPlants)); // save updated array back to localStorage
+            console.log("Plant removed successfully!", resData);
             navigate('/home/mygarden');
         } catch (err) {
             console.error("Request failed:", err.message);
@@ -97,16 +118,25 @@ export default function DetailedPlantPage() {
           </div>
         </div>
           {/*  Add Plant to My Garden Button*/}
-
-          <div className="flex justify-center mt-6 mb-6">
+        <div className="flex justify-center mt-6 mb-6">
+              {
+                  !userPlants.some(plant => plant.id === plantId.id) ? (
+              <button
+              className="flex items-center gap-1 border border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-colors px-4 py-2 rounded-full text-sm font-medium"
+              onClick={handlePlantAdd}
+              >
+                  Add {plant.name} to My Garden
+              </button>): (
               <button
                   className="flex items-center gap-1 border border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-colors px-4 py-2 rounded-full text-sm font-medium"
-                  onClick={handlePlantAdd}
+                  onClick={handlePlantRemove}
               >
+                  Remove {plant.name} from My Garden
+              </button>)
+              }
+    </div>
 
-                  Add {plant.name} to My Garden
-              </button>
-          </div>
+
       </main>
 
       <Footer />
