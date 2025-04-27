@@ -24,7 +24,7 @@ export default function Navbar() {
       <div className="flex gap-10">
         <Link to="/home" className="text-gray-700 hover:text-green-700">Home</Link>
         {(userRole === 'gardener' || userRole === 'home-owner') && (
-          <Link to="/home/my-garden" className="text-gray-700 hover:text-green-700">My Garden</Link>
+          <Link to="/home/mygarden" className="text-gray-700 hover:text-green-700">My Garden</Link>
         )}
         {userRole === 'supervisor' && (
           <Link to="/home/supervisor-panel" className="text-gray-700 hover:text-green-700">Supervisor Panel</Link>

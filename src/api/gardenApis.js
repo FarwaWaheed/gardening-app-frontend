@@ -1,0 +1,25 @@
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:5000/garden';
+
+// Add Plant to My Garden
+export const addPlant = async (userId, plantId) => {
+    try {
+        console.log("userid: ", userId)
+        const response = await axios.post(`${BASE_URL}/addPlant/${userId}`, {
+            "plantId": plantId
+        });
+        return response.data;
+    } catch (error) {
+        throw error.response?.data || error;
+    }
+};
+
+export const getGardenPlants = async (userId) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/getPlants/all/${userId}`);
+        return response.data;
+    } catch (error) {
+        throw error.response?.data || error;
+    }
+}
