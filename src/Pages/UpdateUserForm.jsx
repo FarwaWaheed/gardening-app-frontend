@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getUserById, updateUser } from '../api/userApis'; // you'll need to define getUserById too
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -7,8 +7,7 @@ import BackButton from '../components/BackButton';
 
 export default function UpdateUserForm() {
   const { id } = useParams();
-  const navigate = useNavigate();
-
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -56,6 +55,8 @@ export default function UpdateUserForm() {
     }
   };
 
+ 
+
   if (loading) return <p className="text-center py-20">Loading user data...</p>;
 
   return (
@@ -93,7 +94,7 @@ export default function UpdateUserForm() {
           
 
           <div>
-            <label className="block text-sm font-medium">Password (leave empty to keep unchanged)</label>
+            <label className="block text-sm font-medium">Password (Leave empty to keep unchanged)</label>
             <input
               type="password"
               name="password"

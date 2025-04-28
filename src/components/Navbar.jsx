@@ -4,11 +4,20 @@ import navLogo from '../assets/navLogo.png';
 export default function Navbar() {
   const userRole = localStorage.getItem('userRole');
   const userId = localStorage.getItem('userId');
+  
   const navigate = useNavigate();
+
+  const print = () => {
+    console.log (userId);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('userName');
     localStorage.removeItem('userRole');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
+    localStorage.removeItem('userEmail');
+    
     // you can clear other stored values if needed
     navigate('/login');
   };
@@ -40,7 +49,7 @@ export default function Navbar() {
 
       <div className="flex gap-6">
         <Link to={`/user/updateUser/${userId}`}>
-          <button className="bg-green-100 text-green-700 px-3 py-1 rounded">
+          <button className="bg-green-100 text-green-700 px-3 py-1 rounded" onClick={print}>
             Update Profile
           </button>
         </Link>

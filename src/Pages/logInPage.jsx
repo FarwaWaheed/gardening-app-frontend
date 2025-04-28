@@ -22,7 +22,9 @@ export default function LogIn() {
           if (resData.user) {
             localStorage.setItem('userRole', resData.user.role);
             localStorage.setItem('userName', resData.user.name);
-            localStorage.setItem('userId', resData.user._id);
+            localStorage.setItem('userId', resData.user.id);
+            localStorage.setItem('userEmail', resData.user.email);
+            localStorage.setItem('token', resData.token);
             navigate('/home');
           } else {
             alert('Login failed. No user returned.');
