@@ -28,7 +28,12 @@ export default function ManageUsers() {
         await deleteUser(userId);
         setUsers(users.filter((user) => user._id !== userId));
       } catch (err) {
-        console.error("Error deleting user:", err);
+        console.error("Error deleting User:", err);
+        if (err.response && err.response.status === 403) {
+          alert("You are not authorized to delete this user.");
+        } else {
+          alert("Failed to delete user.");
+        }
       }
     }
   };

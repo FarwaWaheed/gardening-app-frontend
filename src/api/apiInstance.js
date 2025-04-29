@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/user",  // or your env variable later
+  baseURL: "http://localhost:5000",  // or your env variable later
 });
 
 

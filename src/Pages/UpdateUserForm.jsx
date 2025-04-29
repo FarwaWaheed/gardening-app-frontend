@@ -51,7 +51,11 @@ export default function UpdateUserForm() {
       
     } catch (err) {
       console.error('Error updating user:', err);
-      alert('Something went wrong.');
+      if (err.response && err.response.status === 403) {
+        alert("You are not authorized to update this user.");
+      } else {
+        alert("Failed to update user.");
+      }
     }
   };
 

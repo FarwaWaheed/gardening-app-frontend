@@ -22,6 +22,12 @@ export default function ManagePlants() {
         fetchPlants(); // Refresh after delete
       } catch (err) {
         console.error("Failed to delete plant:", err.message);
+        if (err.response && err.response.status === 403) {
+          alert("You are not authorized to delete this plant.");
+        } else {
+          alert("Failed to delete plant.");
+        }
+      
       }
     }
   };

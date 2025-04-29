@@ -46,7 +46,11 @@ const UpdatePlantForm = () => {
       
     } catch (error) {
       console.error('Error updating plant:', error);
-      alert('Failed to update plant.');
+      if (error.response && error.response.status === 403) {
+        alert("You are not authorized to update this plant.");
+      } else {
+        alert("Failed to update plant.");
+      }
     } finally {
       setLoading(false);
     }

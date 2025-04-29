@@ -114,7 +114,7 @@ export default function LogIn() {
                     </div>
 
                     <p className="text-sm text-center mt-6 text-black">
-                        Don’t have an account? <a href="/signup" className="text-blue-600 font-medium">Sign Up</a>
+                        Don’t have an account? <a href="/" className="text-blue-600 font-medium">Sign Up</a>
                     </p>
                 </div>
             </div>
