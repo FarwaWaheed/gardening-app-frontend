@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { getGardenPlants } from '../api/gardenApis';
 import PlantCard from '../components/PlantCard';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default function GardenPage() {
@@ -18,6 +18,8 @@ export default function GardenPage() {
                 if(res.plants.length !==0 ){
                     setPlants(res.plants);
                 }
+                localStorage.setItem("plants", JSON.stringify(plants))
+                console.log("plants: ", JSON.parse(localStorage.getItem("plants")));
             } catch (error) {
                 console.error('Error fetching plants:', error);
             } finally {
@@ -47,7 +49,7 @@ export default function GardenPage() {
 
                 {/* Grid of Plant Cards */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-12 place-items-center">
-                    {plants.map((plant, idx) => (
+                    {plants.map((plant) => (
                         <PlantCard
                             key={plant._id}
                             id={plant._id}
