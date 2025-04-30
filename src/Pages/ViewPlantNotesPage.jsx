@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BackButton from "../components/BackButton.jsx";
+import { Link } from 'react-router-dom';
+
 export default function ViewPlantNotesPage() {
     const { id } = useParams();
     const [records, setRecords] = useState([]);
@@ -61,10 +63,12 @@ export default function ViewPlantNotesPage() {
                     <h1 className="text-2xl font-bold mb-6">Plant Records</h1>
 
                     <div className="flex justify-center mb-8">
+                        <Link to={`/home/${id}/addNote`}>
                         <button
                             className="bg-green-600 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-green-700 transition">
                             + Add a New Plant Record
                         </button>
+                        </Link>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                         {records.map(record => (
