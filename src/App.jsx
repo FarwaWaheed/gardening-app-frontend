@@ -29,7 +29,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/home/category/:category" element={<CategoryPage/>}/>
           <Route path="/home/category/:category/:id" element={<DetailedPlantPage/>}/>
-          <Route path="/home/:id/recordNotes" element={<NotesPage/>}/>
+          <Route path="/home/:id/allNotes" element={<NotesPage/>}/>
           <Route path="/home/:id/addNote" element={<AddPlantNote/>}/>
           <Route path="/home/mygarden" element={<GardenPage/>}/>
           <Route path="/plant/addplant" element={<AddPlantForm />} />
