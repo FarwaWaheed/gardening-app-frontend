@@ -23,10 +23,18 @@ export default function AddPlantNote() {
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
+        const { name, value, files } = e.target;
+        if (name === 'image') {
+            setFormData((prev) => ({
+                ...prev,
+                image: files[0], // store the file object
+            }));
+        } else {
+            setFormData((prev) => ({
+                ...prev,
+                [name]: value,
+            }));
+        }
     };
 
     const handleSubmit = async (e) => {
