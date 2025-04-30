@@ -110,7 +110,7 @@ export default function DetailedPlantPage() {
           </div>
         </div>
           {/*  Add Plant to My Garden Button*/}
-        <div className="flex justify-center mt-6 mb-6">
+        <div className="flex flex-col items-center gap-4 mt-6 mb-6">
               {
                   !userPlants.some(plant => plant.id === plantId.id) ? (
               <button
@@ -126,6 +126,11 @@ export default function DetailedPlantPage() {
                   Remove {plant.name} from My Garden
               </button>)
               }
+            <button
+                className="flex items-center gap-1 border border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-colors px-4 py-2 rounded-full text-sm font-medium"
+            >
+                Record Notes
+            </button>
     </div>
 
 
