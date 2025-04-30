@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const BASE_URL = "http://localhost:5000/plant"
 
 export const addPlantRecord = async (userId, plantId, image, height, notes) => {
@@ -16,7 +17,7 @@ export const addPlantRecord = async (userId, plantId, image, height, notes) => {
                 },
             }
         );
-        return response.record;
+        return response.data;
     } catch (error) {
         throw error.response?.data || error;
     }
@@ -33,10 +34,12 @@ export const getPlantRecord = async (recordId) => {
 
 export const getAllPlantRecords = async (userId, plantId) => {
     try {
+        console.log("userid: ", userId);
+        console.log("plantid: ", plantId);
         const response = await axios.get(`${BASE_URL}/getPlantRecords/all/${userId}/${plantId}`);
-        return response.data;
+        return response.data.plantRecords
     } catch (error) {
-        throw error.response?.data || error;
+        throw error.response?.data.plantRecords || error;
     }
 }
 
