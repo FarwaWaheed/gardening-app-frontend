@@ -16,9 +16,10 @@ export default function ViewPlantNotesPage() {
     useEffect(() => {
         async function fetchRecords() {
             try {
-                const res = await getAllPlantRecords(userId,id);
-                setRecords(res.plantRecords);
-                console.log(res.plantRecords);
+                const records = await getAllPlantRecords(userId,id);
+                console.log("RECORDS: ", records);
+                setRecords(records);
+
             } catch (err) {
                 console.error("Error fetching records:", err);
             }
@@ -46,7 +47,12 @@ export default function ViewPlantNotesPage() {
                 <div className="min-h-screen bg-gray-50 flex flex-col">
                     <Navbar />
                     <main className="flex-1 flex justify-center items-center text-gray-500 text-lg">
-                        Plant details not available.
+                        <Link to={`/home/${id}/addNote`}>
+                            <button
+                                className="bg-green-600 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-green-700 transition">
+                                + Add a New Plant Record
+                            </button>
+                        </Link>
                     </main>
                     <Footer />
                 </div>
@@ -110,6 +116,7 @@ export default function ViewPlantNotesPage() {
                                     {new Date(selectedRecord.date).toLocaleDateString()}
                                 </p>
                                 <p className="text-lg mb-4 whitespace-pre-line">{selectedRecord.observationNote}</p>
+                                <Link to={`/home/${plant.id}/addNote`}>
                                 <button
                                     className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"
                                     onClick={() => {
@@ -119,6 +126,7 @@ export default function ViewPlantNotesPage() {
                                 >
                                     Edit Record
                                 </button>
+                                </Link>
                             </div>
                         </div>
                     )}
