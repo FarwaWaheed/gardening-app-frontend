@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BackButton from "../components/BackButton.jsx";
-export default function PlantNotesPage() {
+export default function ViewPlantNotesPage() {
     const { id } = useParams();
     const [records, setRecords] = useState([]);
     const [selectedRecord, setSelectedRecord] = useState(null);
