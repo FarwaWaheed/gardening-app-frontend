@@ -15,8 +15,8 @@ export default function DetailedPlantPage() {
     const userId = localStorage.getItem('userId');
     let userPlants = localStorage.getItem('plants');
     userPlants = userPlants ? JSON.parse(userPlants) : [];
+    console.log("PLANTS: ", userPlants)
     let plantId = {id: id};
-    console.log(userPlants)
     useEffect(() => {
       const fetchPlant = async () => {
         try {
@@ -35,9 +35,6 @@ export default function DetailedPlantPage() {
         e.preventDefault();
         try {
             const resData = await addPlant( userId, id );
-            userPlants.push(plantId);
-            localStorage.setItem("plants",JSON.stringify(userPlants))
-
             console.log("Plant added successfully!", resData);
             navigate('/home/mygarden');
         } catch (err) {
@@ -48,11 +45,6 @@ export default function DetailedPlantPage() {
         e.preventDefault();
         try {
             const resData = await deleteGardenPlants( userId, id );
-            const index = userPlants.findIndex(plant => plant.id === plantId.id);
-            if (index > -1) { // only splice array when item is found
-                userPlants.splice(index, 1); // 2nd parameter means remove one item only
-            }
-            localStorage.setItem("plants", JSON.stringify(userPlants)); // save updated array back to localStorage
             console.log("Plant removed successfully!", resData);
             navigate('/home/mygarden');
         } catch (err) {
