@@ -16,7 +16,7 @@ import UpdateUserForm from './Pages/UpdateUserForm';
 import GardenPage from './Pages/GardenPage';
 import DiseaseDiagnosisQuiz from './Pages/DiseaseDiagnosisQuiz';
 import PlantIdentificationGuide from './Pages/PlantIdentificationPage';
-import NotesPage from './Pages/PlantNotesPage.jsx';
+import NotesPage from './Pages/ViewPlantNotesPage.jsx';
 
 function App() {
   return (
