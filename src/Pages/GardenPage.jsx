@@ -18,8 +18,9 @@ export default function GardenPage() {
                 if(res.plants.length !==0 ){
                     setPlants(res.plants);
                 }
-                localStorage.setItem("plants", JSON.stringify(plants))
-                console.log("plants: ", JSON.parse(localStorage.getItem("plants")));
+                let userPlants = res.plants.map((plant)=> ({id: plant._id}));
+                localStorage.setItem('plants', JSON.stringify(userPlants))
+                console.log("plants: ", JSON.parse(localStorage.getItem('plants')));
             } catch (error) {
                 console.error('Error fetching plants:', error);
             } finally {
