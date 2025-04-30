@@ -125,7 +125,7 @@ export default function DetailedPlantPage() {
                   Remove {plant.name} from My Garden
               </button>)
               }
-            <Link to={`/home/category/${plant.category}/${id}/recordNotes`}>
+            <Link to={`/home/${id}/allNotes`}>
             <button
                 className="flex items-center gap-1 border border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-colors px-4 py-2 rounded-full text-sm font-medium"
             >
