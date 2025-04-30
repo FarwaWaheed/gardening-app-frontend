@@ -16,7 +16,7 @@ import UpdateUserForm from './Pages/UpdateUserForm';
 import GardenPage from './Pages/GardenPage';
 import DiseaseDiagnosisQuiz from './Pages/DiseaseDiagnosisQuiz';
 import PlantIdentificationGuide from './Pages/PlantIdentificationPage';
-
+import NotesPage from './Pages/PlantNotesPage.jsx';
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/home/category/:category" element={<CategoryPage/>}/>
           <Route path="/home/category/:category/:id" element={<DetailedPlantPage/>}/>
+          <Route path="/home/category/:category/:id/recordNotes" element={<NotesPage/>}/>
           <Route path="/home/mygarden" element={<GardenPage/>}/>
           <Route path="/plant/addplant" element={<AddPlantForm />} />
           <Route path="/plant/update/:id" element={<UpdatePlantForm />} />
