@@ -17,6 +17,7 @@ import GardenPage from './Pages/GardenPage';
 import DiseaseDiagnosisQuiz from './Pages/DiseaseDiagnosisQuiz';
 import PlantIdentificationGuide from './Pages/PlantIdentificationPage';
 import CommunityForum from './Pages/CommunityForum.jsx';
+import WeatherUpdate from './Pages/WeatherUpdate.jsx';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/home/disease-diagnosis-quiz" element={<DiseaseDiagnosisQuiz />} />
           <Route path="/home/plant-identification-guide" element={<PlantIdentificationGuide />} />
           <Route path = "/home/community" element = {<CommunityForum/>} />
+          <Route path = "/home/weatherUpdate" element = {<WeatherUpdate/>} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>
