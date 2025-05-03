@@ -33,11 +33,11 @@ function App() {
           <Route path="/home/:id/allNotes" element={<NotesPage/>}/>
           <Route path="/home/:id/addNote" element={<AddPlantNote/>}/>
           <Route path="/home/mygarden" element={<GardenPage/>}/>
+          <Route path="/home/:userId/:plantId/addReminder" element={<ReminderForm />} />
           <Route path="/plant/addplant" element={<AddPlantForm />} />
           <Route path="/plant/update/:id" element={<UpdatePlantForm />} />
           <Route path="/plant/search" element={<SearchPlantsPage />} />
           <Route path="/plant/suggestions" element={<PlantSuggestionPage />} />
-          <Route path="/plant/addReminder" element={<ReminderForm />} />
           <Route path="/home/admin-panel" element={<AdminPanel />} />
           <Route path="/home/supervisor-panel" element={<SupervisorPanel />} />
           <Route path="/user/updateUser/:id" element={<UpdateUserForm />} />
