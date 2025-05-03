@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { getGroups, joinGroup } from "../../api/groupApis";
+import { useNotification } from '../../context/NotificationContext';
+
 
 export default function JoinGroup() {
   const [groups, setGroups] = useState([]);
   const [joinedGroups, setJoinedGroups] = useState([]);
+  
+  const { addNotification } = useNotification();
+  const userRole = localStorage.getItem('userRole');
+  
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
@@ -35,11 +41,11 @@ export default function JoinGroup() {
   const handleJoin = async (groupId) => {
     try {
       await joinGroup(groupId);
-      alert("You have successfully joined the group!");
+      addNotification(userId, userRole, "success", "You have successfully joined the group!");
       setJoinedGroups((prev) => [...prev, groupId]);
     } catch (err) {
       console.error("Error joining group:", err);
-      alert("Failed to join the group. Please try again.");
+      addNotification(userId, userRole, "error", "Failed to join the group. Please try again.");
     }
   };
 

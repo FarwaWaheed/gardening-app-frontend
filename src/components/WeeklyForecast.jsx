@@ -1,6 +1,5 @@
 import React from "react";
 import { useWeeklyForecast } from "../hooks/useWeeklyForecast";
-import { getGardeningTips } from "../utils/getGardeningTips";
 
 const WeeklyForecast = ({ location = "Mumbai" }) => {
   const { forecast, loading } = useWeeklyForecast(location);

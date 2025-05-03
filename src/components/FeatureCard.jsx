@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function FeatureCard({ title, description, button, image , link, isInternal}) {
     return (
-      <div className="max-w-sm bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-2xl ">
+      <div className="w-80 bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-2xl ">
       
         <img src={image} alt={title} className="w-full h-40 object-cover" />
         <div className="p-4">

@@ -2,10 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { getAllUsers, deleteUser } from '../../api/userApis';
 import { useNavigate } from 'react-router-dom';
 import { MdDelete, MdEdit, MdVisibility } from 'react-icons/md';
+import { useNotification } from '../../context/NotificationContext';
+
+
 
 export default function ManageUsers() {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  
+  const { addNotification } = useNotification();
+  const userRole = localStorage.getItem('userRole');
+  const userId = localStorage.getItem('userId');
+  
 
   // Fetch users when component mounts
   useEffect(() => {
@@ -22,17 +30,18 @@ export default function ManageUsers() {
   }, []);
 
   // Delete user handler
-  const handleDelete = async (userId) => {
+  const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        await deleteUser(userId);
+        await deleteUser(id);
+        addNotification(userId, userRole, "info", `${id} User deleted successfully!`);
         setUsers(users.filter((user) => user._id !== userId));
       } catch (err) {
         console.error("Error deleting User:", err);
         if (err.response && err.response.status === 403) {
           alert("You are not authorized to delete this user.");
         } else {
-          alert("Failed to delete user.");
+          addNotification(userId, userRole, "info", `Failed to delete ${id} User.`);
         }
       }
     }

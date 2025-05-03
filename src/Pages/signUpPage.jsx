@@ -7,7 +7,9 @@ import validateUserForm from '../utils/validateUserForm';
 
 
 
+
 export default function SignUp() {
+   
     const navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
 

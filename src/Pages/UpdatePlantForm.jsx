@@ -6,10 +6,14 @@ import Footer from '../components/Footer';
 import PlantForm from '../components/PlantForm';
 import validatePlantForm from '../utils/validatePlantForm';
 import BackButton from '../components/BackButton';
+import { useNotification } from '../context/NotificationContext';
 
 const UpdatePlantForm = () => {
+  const userRole = localStorage.getItem('userRole');
+  const userId = localStorage.getItem('userId');
   const {  id } = useParams();
   const navigate = useNavigate();
+  const { addNotification } = useNotification();
   const [formData, setFormData] = useState(null);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -42,14 +46,16 @@ const UpdatePlantForm = () => {
     setLoading(true);
     try {
       await updatePlant(id, formData);
-      alert('Plant updated successfully!');
+      addNotification(userId, userRole, "info", `${formData.name} Plant information Updated!`);
+      
       
     } catch (error) {
       console.error('Error updating plant:', error);
       if (error.response && error.response.status === 403) {
         alert("You are not authorized to update this plant.");
       } else {
-        alert("Failed to update plant.");
+        addNotification(userId, userRole, "error", `Failed to update ${formData.name} plant.`);
+        
       }
     } finally {
       setLoading(false);

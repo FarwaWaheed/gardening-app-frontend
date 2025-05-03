@@ -5,14 +5,23 @@ import { useWeather } from "../hooks/useWeather";
 import { getGardeningTips } from "../utils/getGardeningTips";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useNotification } from '../context/NotificationContext';
+
 
 const WeatherUpdate = () => {
   const [location, setLocation] = useState("Karachi");
   const [inputValue, setInputValue] = useState("Karachi");
   const { weather, loading } = useWeather(location);
 
+  const { addNotification } = useNotification();
+  const userRole = localStorage.getItem('userRole');
+  const userId = localStorage.getItem('userId');
+  
+
   const handleUpdateClick = () => {
     setLocation(inputValue);
+    const message = `🌤️ Weather update for ${inputValue}. Tip: ${getGardeningTips(weather)}`;
+    addNotification(userId, userRole, "info", message);
   };
 
 

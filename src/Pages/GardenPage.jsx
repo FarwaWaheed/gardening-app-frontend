@@ -34,7 +34,7 @@ export default function GardenPage() {
             <Navbar />
 
             <main className="flex-1 px-4 md:px-12 py-10">
-                <h1 className="text-center text-xl font-medium text-gray-800 mb-6">Plants</h1>
+                <h1 className="text-center text-xl font-medium text-gray-800 mb-6">My Garden!</h1>
 
                 {/* Add New Plant Button */}
                 <Link to={'/plant/search'}>

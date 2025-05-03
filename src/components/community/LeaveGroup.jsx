@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import { getGroups, leaveGroup } from "../../api/groupApis";
+import { useNotification } from '../../context/NotificationContext';
 
 export default function LeaveGroup() {
   const [groups, setGroups] = useState([]);
+
+  const { addNotification } = useNotification();
+  const userRole = localStorage.getItem('userRole');
+  
+  
   const userId = localStorage.getItem("userId");
 
   // Fetch groups the current user is a member of
@@ -30,11 +36,11 @@ export default function LeaveGroup() {
   const handleLeave = async (groupId) => {
     try {
       await leaveGroup(groupId);
-      alert("You have left the group successfully!");
+      addNotification(userId, userRole, "success", "You have left the group successfully!");
       fetchUserGroups(); // Refresh the list
     } catch (err) {
       console.error("Error leaving group:", err);
-      alert("Something went wrong while trying to leave the group.");
+      addNotification(userId, userRole, "error", "Something went wrong while trying to leave the group.");
     }
   };
 

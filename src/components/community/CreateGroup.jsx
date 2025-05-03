@@ -3,8 +3,13 @@ import { createGroup } from "../../api/groupApis";
 import {getAllUsers} from "../../api/userApis";
 import { useNavigate } from "react-router-dom";
 import validateGroupForm from "../../utils/validateGroupForm";
+import { useNotification } from '../../context/NotificationContext';
 
 export default function CreateGroup() {
+  const { addNotification } = useNotification();
+  const userRole = localStorage.getItem('userRole');
+  const userId = localStorage.getItem('userId');
+
   const [groupName, setGroupName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
@@ -64,11 +69,11 @@ export default function CreateGroup() {
 
     try {
       await createGroup(groupData);
-      alert("Group created successfully!");
+      addNotification(userId, userRole, "success", `${groupData.name} Group created Successfully!`);
       navigate("/home/community"); 
     } catch (error) {
       console.error("Error creating group:", error);
-      alert("Failed to create group.");
+      addNotification(userId, userRole, "error", `Failed to create ${groupData.name} group! `);
     }
   };
 

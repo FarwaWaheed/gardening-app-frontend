@@ -4,8 +4,8 @@ import { MdEmail } from 'react-icons/md';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-green-700 to-green-400 text-white py-10 px-4">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
+    <footer className="bg-gradient-to-t from-green-700 to-green-400 text-white py-10 px-4 ">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 ">
         {/* Logo + CTA */}
         <div className="flex flex-col items-start ">
           <img src={footerLogo} alt="Plantopia Logo" className="h-18 max-h-18 w-[140px] object-cover" />
