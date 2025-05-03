@@ -18,6 +18,7 @@ import DiseaseDiagnosisQuiz from './Pages/DiseaseDiagnosisQuiz';
 import PlantIdentificationGuide from './Pages/PlantIdentificationPage';
 import NotesPage from './Pages/ViewPlantNotesPage.jsx';
 import AddPlantNote from "./Pages/AddPlantNote.jsx";
+import ReminderForm from './Pages/ReminderForm.jsx';
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
