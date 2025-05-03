@@ -3,8 +3,10 @@ import DatePicker from 'react-datepicker';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BackButton from '../components/BackButton';
+import { useParams } from 'react-router-dom';
 
 export default function ReminderForm({ userId, plantId }) {
+    const { userId, plantId } = useParams();
     const [formData, setFormData] = useState({
         taskType: '',
         date: new Date(),
