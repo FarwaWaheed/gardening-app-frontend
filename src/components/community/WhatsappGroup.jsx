@@ -8,7 +8,7 @@ export default function WhatsappGroup() {
                     Stay in touch with fellow plant enthusiasts on WhatsApp.
                     </p>
                     <a
-                    href="https://chat.whatsapp.com/your-group-link"
+                    href="https://chat.whatsapp.com/KRLS1pDaMiK5DOHziX9gGp"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"

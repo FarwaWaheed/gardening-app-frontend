@@ -1,6 +1,6 @@
 export default function CategoryCard({ name, image }) {
   return (
-    <div  className="flex flex-col items-center bg-green-50 p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 w-60 h-60">
+    <div  className="flex flex-col items-center bg-green-100 p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 w-60 h-60">
       <img
         src={image}
         alt={name}

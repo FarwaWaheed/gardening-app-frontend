@@ -9,7 +9,7 @@ export default function FacebookGroup() {
                 Connect with the Plantopia community on Facebook.
                 </p>
                 <a
-                href="https://facebook.com/plantopia-group"
+                href="https://www.facebook.com/groups/696246966097236/?ref=share&mibextid=NSMWBT"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"

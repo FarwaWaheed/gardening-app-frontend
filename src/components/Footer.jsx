@@ -1,6 +1,7 @@
 import footerLogo from '../assets/footerLogo.png';
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
+import {Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -10,9 +11,11 @@ export default function Footer() {
         <div className="flex flex-col items-start ">
           <img src={footerLogo} alt="Plantopia Logo" className="h-18 max-h-18 w-[140px] object-cover" />
           <p className="mb-4"> Plant, Care, Connect.</p>
+          <Link to={'/contact'}>
           <button className="bg-white text-green-700 px-5 py-2 rounded-full font-semibold shadow hover:shadow-md hover:bg-green-100 transition">
             Get in Touch!
           </button>
+          </Link>
         </div>
 
 
@@ -36,13 +39,13 @@ export default function Footer() {
           
           {/* Social Icons */}
           <div className="flex flex-col items-center gap-4 mt-2 text-xl">
-            <a href="#" className="hover:text-green-200 transition">
+            <a href="https://www.facebook.com/groups/696246966097236/?ref=share&mibextid=NSMWBT" className="hover:text-green-200 transition">
               <FaFacebookF />
             </a>
-            <a href="#" className="hover:text-green-200 transition">
+            <a href="https://www.facebook.com/groups/696246966097236/?ref=share&mibextid=NSMWBT" className="hover:text-green-200 transition">
               <FaInstagram />
             </a>
-            <a href="#" className="hover:text-green-200 transition">
+            <a href="https://chat.whatsapp.com/KRLS1pDaMiK5DOHziX9gGp" className="hover:text-green-200 transition">
               <FaWhatsapp />
             </a>
           </div>

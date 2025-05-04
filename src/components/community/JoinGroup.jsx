@@ -41,7 +41,7 @@ export default function JoinGroup() {
   const handleJoin = async (groupId) => {
     try {
       await joinGroup(groupId);
-      addNotification(userId, userRole, "success", "You have successfully joined the group!");
+      addNotification(userId, userRole, "success", "Group joined successfully!");
       setJoinedGroups((prev) => [...prev, groupId]);
     } catch (err) {
       console.error("Error joining group:", err);

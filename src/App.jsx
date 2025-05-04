@@ -19,6 +19,7 @@ import PlantIdentificationGuide from './Pages/PlantIdentificationPage';
 import CommunityForum from './Pages/CommunityForum.jsx';
 import WeatherUpdate from './Pages/WeatherUpdate.jsx';
 import NotificationsPage from './Pages/NotificationsPage.jsx';
+import ContactMe from './components/ContactMe.jsx';
 
 function App() {
   return (
@@ -44,6 +45,8 @@ function App() {
           <Route path = "/home/community" element = {<CommunityForum/>} />
           <Route path = "/home/weatherUpdate" element = {<WeatherUpdate/>} />
           <Route path = "/home/notifications" element = {<NotificationsPage/>} />
+          <Route path = "/contact" element = {<ContactMe/>} />
+          
           
           
           <Route path="*" element={<NotFound />} />

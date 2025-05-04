@@ -36,7 +36,7 @@ export default function LeaveGroup() {
   const handleLeave = async (groupId) => {
     try {
       await leaveGroup(groupId);
-      addNotification(userId, userRole, "success", "You have left the group successfully!");
+      addNotification(userId, userRole, "success", "Group left successfully!");
       fetchUserGroups(); // Refresh the list
     } catch (err) {
       console.error("Error leaving group:", err);
