@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BackButton from '../components/BackButton';
 import { useParams } from 'react-router-dom';
+import {addReminder,getReminders, updateReminder,deleteReminder } from '../api/reminderApis.js'
 
 export default function ReminderForm({ userId, plantId }) {
     const { userId, plantId } = useParams();
@@ -25,7 +26,7 @@ export default function ReminderForm({ userId, plantId }) {
         e.preventDefault();
         setLoading(true);
         try {
-            await axios.post(`/api/reminders/${userId}/${plantId}`, formData);
+            const response = await addReminder(userId,plantId,formData.taskType,formData.date,formData.notes);
             setSuccess(true);
             alert('Reminder created successfully!');
         } catch (error) {
