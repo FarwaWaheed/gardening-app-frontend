@@ -23,7 +23,7 @@ export const addReminder = async (userId, plantId, taskType, date, notes) => {
     }
 };
 
-export const getPlantRecord = async (userId) => {
+export const getReminders = async (userId) => {
     try {
         const response = await axios.get(`${BASE_URL}/getReminders/${userId}`);
         return response.data;
@@ -50,7 +50,7 @@ export const updateReminder = async (reminderId, data) => {
 };
 
 
-export const deletePlantRecord = async (reminderId) => {
+export const deleteReminder = async (reminderId) => {
     try {
         const response = await axios.delete(`${BASE_URL}/deleteReminder/${reminderId}`);
         return response.message;
