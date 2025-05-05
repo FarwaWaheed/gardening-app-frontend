@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "http://localhost:5000/user"
+const BASE_URL = `${import.meta.env.VITE_API_URL}/user`;
 
 export const addReminder = async (userId, plantId, taskType, date, notes) => {
     try {
