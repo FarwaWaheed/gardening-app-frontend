@@ -6,8 +6,11 @@ import BackButton from '../components/BackButton';
 import { useParams } from 'react-router-dom';
 import {addReminder,getReminders, updateReminder,deleteReminder } from '../api/reminderApis.js'
 
-export default function ReminderForm({ userId, plantId }) {
+export default function ReminderForm({}) {
     const { userId, plantId } = useParams();
+    const [task, setTask] = useState('');
+    const [date, setDate] = useState('');
+    const [notes, setNotes] = useState('');
     const [formData, setFormData] = useState({
         taskType: '',
         date: new Date(),
@@ -42,7 +45,7 @@ export default function ReminderForm({ userId, plantId }) {
             <Navbar />
 
             <main className="flex-grow px-4 py-8 w-full max-w-4xl lg:px-12 mx-auto">
-                <h2 className="text-2xl font-semibold mb-6 text-center text-green-700">Add a New Plant</h2>
+                <h2 className="text-2xl font-semibold mb-6 text-center text-green-700">Add a New Reminder</h2>
                 <BackButton/>
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-4">
             <h2 className="text-xl font-semibold text-green-700">Set a Plant Reminder</h2>

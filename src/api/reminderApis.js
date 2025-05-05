@@ -11,11 +11,6 @@ export const addReminder = async (userId, plantId, taskType, date, notes) => {
                 "date": date,
                 "notes":notes,
             },
-            {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            }
         );
         return response.data;
     } catch (error) {

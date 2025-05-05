@@ -132,7 +132,7 @@ export default function DetailedPlantPage() {
                 View Notes
             </button>
             </Link>
-            <Link to={`/plant/${userId}/${plant.id}/addReminder`}>
+            <Link to={`/home/${userId}/${id}/addReminder`}>
                 <button
                     className="flex items-center gap-1 border border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-colors px-4 py-2 rounded-full text-sm font-medium"
                 >

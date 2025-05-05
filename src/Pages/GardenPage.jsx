@@ -4,10 +4,12 @@ import Footer from '../components/Footer';
 import { getGardenPlants } from '../api/gardenApis';
 import PlantCard from '../components/PlantCard';
 import { Link } from 'react-router-dom';
-
+import ReminderCard from "../components/ReminderCard.jsx";
+import {getReminders} from '../api/reminderApis.js'
 
 export default function GardenPage() {
     const [plants, setPlants] = useState([]);
+    const [reminders, setReminders] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const userId = localStorage.getItem('userId');
@@ -21,6 +23,17 @@ export default function GardenPage() {
                 let userPlants = res.plants.map((plant)=> ({id: plant._id}));
                 localStorage.setItem('plants', JSON.stringify(userPlants))
                 console.log("plants: ", JSON.parse(localStorage.getItem('plants')));
+
+                // Fetch reminders for each plant
+                let allReminders = [];
+                for (const plant of userPlants) {
+                    const plantReminders = await getReminders(userId);
+                    console.log("reminders: ",plantReminders)
+                    plantReminders.data.forEach((reminder) =>
+                        allReminders.push({ ...reminder, plantName: plant.name })
+                    );
+                }
+                setReminders(allReminders);
             } catch (error) {
                 console.error('Error fetching plants:', error);
             } finally {
@@ -59,6 +72,13 @@ export default function GardenPage() {
                             image={plant.imageUrl}
                             category = {plant.category}
                         />
+                    ))}
+                </div>
+                {/* Reminder Cards Section */}
+                <h2 className="text-center text-lg font-semibold text-gray-700 mb-4">Reminders</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {reminders.map((reminder) => (
+                        <ReminderCard key={reminder._id} reminder={reminder} plantName={reminder.plantName} />
                     ))}
                 </div>
             </main>
