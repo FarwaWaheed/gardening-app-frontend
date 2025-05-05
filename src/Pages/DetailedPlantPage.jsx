@@ -12,6 +12,7 @@ export default function DetailedPlantPage() {
     const [plant, setPlant] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const role = localStorage.getItem('userRole');
     const userId = localStorage.getItem('userId');
     let userPlants = localStorage.getItem('plants');
     userPlants = userPlants ? JSON.parse(userPlants) : [];
@@ -125,13 +126,16 @@ export default function DetailedPlantPage() {
                   Remove {plant.name} from My Garden
               </button>)
               }
-            <Link to={`/home/${plant.id}/allNotes`}>
+            {role === 'gardener' && (
+            <Link to={`/home/${id}/allNotes`}>
             <button
                 className="flex items-center gap-1 border border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-colors px-4 py-2 rounded-full text-sm font-medium"
             >
                 View Notes
             </button>
             </Link>
+            )}
+            {role === 'gardener' && (
             <Link to={`/home/${userId}/${id}/addReminder`}>
                 <button
                     className="flex items-center gap-1 border border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-colors px-4 py-2 rounded-full text-sm font-medium"
@@ -139,6 +143,7 @@ export default function DetailedPlantPage() {
                     Add a Reminder
                 </button>
             </Link>
+                )}
     </div>
 
 

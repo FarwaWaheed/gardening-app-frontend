@@ -56,7 +56,7 @@ export default function AddPlantNote() {
             <Navbar />
 
             <main className="flex-grow px-4 py-8 w-full max-w-4xl lg:px-12 mx-auto">
-                <h2 className="text-2xl font-semibold mb-6 text-center text-green-700">Add a New Plant</h2>
+                <h2 className="text-2xl font-semibold mb-6 text-center text-green-700">Add a New Plant Record</h2>
                 <BackButton/>
                 <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow space-y-4">
 
