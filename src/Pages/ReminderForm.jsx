@@ -4,9 +4,15 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BackButton from '../components/BackButton';
 import { useParams } from 'react-router-dom';
-import {addReminder,getReminders, updateReminder,deleteReminder } from '../api/reminderApis.js'
+import {addReminder,getReminders, updateReminder,deleteReminder } from '../api/reminderApis.js';
+import {useNotification} from '../context/NotificationContext.jsx'
 
 export default function ReminderForm({}) {
+
+    const userRole = localStorage.getItem('userRole');
+    const { addNotification } = useNotification();
+
+
     const { userId, plantId } = useParams();
     const [task, setTask] = useState('');
     const [date, setDate] = useState('');
@@ -31,10 +37,12 @@ export default function ReminderForm({}) {
         try {
             const response = await addReminder(userId,plantId,formData.taskType,formData.date,formData.notes);
             setSuccess(true);
-            alert('Reminder created successfully!');
+            addNotification(userId, userRole, "success", 'Reminder created successfully!');
+            
         } catch (error) {
             console.error('Error creating reminder:', error);
-            alert('Failed to create reminder.');
+            addNotification(userId, userRole, "error", 'Failed to set Reminder');
+            
         } finally {
             setLoading(false);
         }
