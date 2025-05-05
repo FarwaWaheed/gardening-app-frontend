@@ -1,7 +1,7 @@
 import api from './apiInstance';
 
 
-const BASE_URL = 'http://localhost:5000/user';
+const BASE_URL = `${import.meta.env.VITE_API_URL}/user`;
 
 // Sign Up
 export const signUpUser = async (userData) => {

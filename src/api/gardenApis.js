@@ -1,6 +1,6 @@
 import axios from 'axios';
-
-const BASE_URL = 'http://localhost:5000/garden';
+import {url} from './apiInstance.js';
+const BASE_URL = `${import.meta.env.VITE_API_URL}/garden`;
 
 // Add Plant to My Garden
 export const addPlant = async (userId, plantId) => {
