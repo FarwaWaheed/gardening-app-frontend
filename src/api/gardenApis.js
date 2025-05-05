@@ -23,3 +23,14 @@ export const getGardenPlants = async (userId) => {
         throw error.response?.data || error;
     }
 }
+
+export const deleteGardenPlants = async (userId, plantId) => {
+    try {
+        const response = await axios.delete(`${BASE_URL}/deletePlant/${userId}/${plantId}`, {
+            "plantId": plantId
+        });
+        return response.data;
+    } catch (error) {
+        throw error.response?.data || error;
+    }
+}

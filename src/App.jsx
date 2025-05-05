@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-
+import "react-datepicker/dist/react-datepicker.css";
 import LogIn from './Pages/logInPage';
 import SignUp from './Pages/signUpPage.jsx';
 import Home from './Pages/homePage';
@@ -16,6 +16,9 @@ import UpdateUserForm from './Pages/UpdateUserForm';
 import GardenPage from './Pages/GardenPage';
 import DiseaseDiagnosisQuiz from './Pages/DiseaseDiagnosisQuiz';
 import PlantIdentificationGuide from './Pages/PlantIdentificationPage';
+import NotesPage from './Pages/ViewPlantNotesPage.jsx';
+import AddPlantNote from "./Pages/AddPlantNote.jsx";
+import ReminderForm from './Pages/ReminderForm.jsx';
 import CommunityForum from './Pages/CommunityForum.jsx';
 import WeatherUpdate from './Pages/WeatherUpdate.jsx';
 import NotificationsPage from './Pages/NotificationsPage.jsx';
@@ -32,7 +35,10 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/home/category/:category" element={<CategoryPage/>}/>
           <Route path="/home/category/:category/:id" element={<DetailedPlantPage/>}/>
+          <Route path="/home/:id/allNotes" element={<NotesPage/>}/>
+          <Route path="/home/:id/addNote" element={<AddPlantNote/>}/>
           <Route path="/home/mygarden" element={<GardenPage/>}/>
+          <Route path="/home/:userId/:plantId/addReminder" element={<ReminderForm />} />
           <Route path="/plant/addplant" element={<AddPlantForm />} />
           <Route path="/plant/update/:id" element={<UpdatePlantForm />} />
           <Route path="/plant/search" element={<SearchPlantsPage />} />
