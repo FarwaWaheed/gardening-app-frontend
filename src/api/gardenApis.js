@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {url} from './apiInstance.js';
 const BASE_URL = `${import.meta.env.VITE_API_URL}/garden`;
 
 // Add Plant to My Garden
