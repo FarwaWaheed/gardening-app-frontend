@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import "react-datepicker/dist/react-datepicker.css";
+//import "react-datepicker/dist/react-datepicker.css";
 import LogIn from './Pages/logInPage';
 import SignUp from './Pages/signUpPage.jsx';
 import Home from './Pages/homePage';
