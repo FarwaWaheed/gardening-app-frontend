@@ -19,6 +19,11 @@ import PlantIdentificationGuide from './Pages/PlantIdentificationPage';
 import NotesPage from './Pages/ViewPlantNotesPage.jsx';
 import AddPlantNote from "./Pages/AddPlantNote.jsx";
 import ReminderForm from './Pages/ReminderForm.jsx';
+import CommunityForum from './Pages/CommunityForum.jsx';
+import WeatherUpdate from './Pages/WeatherUpdate.jsx';
+import NotificationsPage from './Pages/NotificationsPage.jsx';
+import ContactMe from './components/ContactMe.jsx';
+
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -43,6 +48,12 @@ function App() {
           <Route path="/user/updateUser/:id" element={<UpdateUserForm />} />
           <Route path="/home/disease-diagnosis-quiz" element={<DiseaseDiagnosisQuiz />} />
           <Route path="/home/plant-identification-guide" element={<PlantIdentificationGuide />} />
+          <Route path = "/home/community" element = {<CommunityForum/>} />
+          <Route path = "/home/weatherUpdate" element = {<WeatherUpdate/>} />
+          <Route path = "/home/notifications" element = {<NotificationsPage/>} />
+          <Route path = "/contact" element = {<ContactMe/>} />
+          
+          
           
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -6,13 +6,16 @@ import validatePlantForm from '../utils/validatePlantForm';
 import PlantForm from '../components/PlantForm';
 import { addPlant } from '../api/plantApis';
 import BackButton from '../components/BackButton';
+import { useNotification } from '../context/NotificationContext';
 
 
 export default function AddPlantForm() {
    
-  
+  const { addNotification } = useNotification();
+  const userRole = localStorage.getItem('userRole');
+  const userId = localStorage.getItem('userId');
     
-    const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);  
 
   const [formData, setFormData] = useState({
@@ -46,11 +49,13 @@ export default function AddPlantForm() {
     try {
       const response = await addPlant(formData);
       console.log('Plant saved:', response.data);
-      alert('Plant added successfully!');
+      addNotification(userId, userRole, "success", `${formData.name} Plant added successfully!`);
+      
 
     } catch (error) {
       console.error('Error saving plant:', error);
-      alert('Something went wrong while saving the plant.');
+      addNotification(userId, userRole, "error", 'Something went wrong while saving the plant.');
+      
     } finally {
         setLoading(false);
       }

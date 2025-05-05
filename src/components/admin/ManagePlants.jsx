@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { getAllPlants, deletePlant } from '../../api/plantApis';
 import { Link } from 'react-router-dom';
 import { MdVisibility, MdEdit, MdDelete } from 'react-icons/md';
+import { useNotification } from '../../context/NotificationContext';
 
 export default function ManagePlants() {
   const [plants, setPlants] = useState([]);
+  const { addNotification } = useNotification();
+  const userRole = localStorage.getItem('userRole');
+  const userId = localStorage.getItem('userId');
 
   const fetchPlants = async () => {
     try {
@@ -19,9 +23,16 @@ export default function ManagePlants() {
     if (window.confirm('Are you sure you want to delete this plant?')) {
       try {
         await deletePlant(id);
+        addNotification(userId, userRole, "info", "Plant Information Deleted!");
         fetchPlants(); // Refresh after delete
       } catch (err) {
         console.error("Failed to delete plant:", err.message);
+        if (err.response && err.response.status === 403) {
+          alert("You are not authorized to delete this plant.");
+        } else {
+          addNotification(userId, userRole, "error", "Failed to delete Plant!");
+        }
+      
       }
     }
   };

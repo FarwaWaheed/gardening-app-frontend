@@ -12,9 +12,9 @@ const categories = [
 
 export default function CategorySection() {
   return (
-    <section className="text-center py-18">
+    <section className="text-center py-16">
       <h2 className="text-2xl font-semibold mb-6">Category</h2>
-      <div className="flex justify-center gap-x-12">
+      <div className="flex flex-wrap justify-center gap-6 md:gap-12">
         {categories.map((cat, idx) => (
             <Link  key={idx} to={cat.path}>
               <CategoryCard name={cat.name} image={cat.image} />

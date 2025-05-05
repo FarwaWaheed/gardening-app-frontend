@@ -2,11 +2,14 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import CategorySection from '../components/CategorySection';
-import ValueBanner from '../components/ValueBanner';
+import CommunityBanner from '../components/CommunityBanner';
 import MoreFeaturesSection from '../components/MoreFeaturesSection';
 import Footer from '../components/Footer';
 import { useState, useEffect } from 'react';
 import { Alert, Collapse } from '@mui/material';
+import HeroSection2 from '../components/HeroSection2';
+import CareSection from '../components/CareSection';
+import WeatherBanner from '../components/WeatherBanner';
 
 
 
@@ -71,8 +74,11 @@ export default function Home() {
         
         <HeroSection />
         <CategorySection/>
-        <ValueBanner/>
+        <CommunityBanner/>
         <MoreFeaturesSection/>
+        <HeroSection2/>
+        <CareSection/>
+        <WeatherBanner/>
         < Footer />
         
       </div>

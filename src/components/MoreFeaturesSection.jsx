@@ -38,7 +38,7 @@ export default function MoreFeaturesSection() {
   return (
     <section className="py-18 px-4 text-center">
       <h2 className="text-xl font-semibold mb-6">More Features</h2>
-      <div className="flex flex-wrap justify-center gap-x-8">
+      <div className="flex flex-wrap justify-center gap-x-12">
     
         {features.map((feat, idx) => (
           <FeatureCard key={idx} {...feat} />

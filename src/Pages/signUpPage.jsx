@@ -7,7 +7,9 @@ import validateUserForm from '../utils/validateUserForm';
 
 
 
+
 export default function SignUp() {
+   
     const navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
 
@@ -31,8 +33,7 @@ export default function SignUp() {
         try {
           const resData = await signUpUser(data);
           console.log("Signup success:", resData);
-          localStorage.setItem('userRole', resData.user.role);
-          localStorage.setItem('userName', resData.user.name);
+          
           navigate('/login');
         } catch (err) {
           console.error("Signup failed:", err.message);

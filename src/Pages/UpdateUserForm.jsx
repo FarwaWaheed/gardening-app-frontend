@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getUserById, updateUser } from '../api/userApis'; // you'll need to define getUserById too
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BackButton from '../components/BackButton';
+import { useNotification } from '../context/NotificationContext';
 
 export default function UpdateUserForm() {
+  const userRole = localStorage.getItem('userRole');
+  const userId = localStorage.getItem('userId');
   const { id } = useParams();
-  const navigate = useNavigate();
-
+  const { addNotification } = useNotification();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -48,13 +51,19 @@ export default function UpdateUserForm() {
     e.preventDefault();
     try {
       await updateUser(id, formData);
-      alert('User updated successfully!');
+      addNotification(userId, userRole, "info", `${formData.name}'s profile updated!`);
       
     } catch (err) {
       console.error('Error updating user:', err);
-      alert('Something went wrong.');
+      if (err.response && err.response.status === 403) {
+        alert("You are not authorized to update this user.");
+      } else {
+        addNotification(userId, userRole, "error", `${formData.name}! Failed to update profile!`);
+      }
     }
   };
+
+ 
 
   if (loading) return <p className="text-center py-20">Loading user data...</p>;
 
@@ -93,7 +102,7 @@ export default function UpdateUserForm() {
           
 
           <div>
-            <label className="block text-sm font-medium">Password (leave empty to keep unchanged)</label>
+            <label className="block text-sm font-medium">Password (Leave empty to keep unchanged)</label>
             <input
               type="password"
               name="password"
