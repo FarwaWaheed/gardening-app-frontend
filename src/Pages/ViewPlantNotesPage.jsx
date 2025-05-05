@@ -83,9 +83,9 @@ export default function ViewPlantNotesPage() {
                                 className="bg-white shadow-lg rounded-xl p-4 hover:shadow-xl transition cursor-pointer"
                                 onClick={() => setSelectedRecord(record)}
                             >
-                                {record.imageUrl && (
+                                {`http://localhost:5000${record.imageUrl}` && (
                                     <img
-                                        src={record.imageUrl}
+                                        src={`http://localhost:5000${record.imageUrl}`}
                                         alt="Plant record"
                                         className="w-full h-40 object-cover rounded-md mb-3"
                                     />
@@ -105,9 +105,9 @@ export default function ViewPlantNotesPage() {
                                 >
                                     ✕
                                 </button>
-                                {selectedRecord.imageUrl && (
+                                {`http://localhost:5000${selectedRecord.imageUrl}` && (
                                     <img
-                                        src={selectedRecord.imageUrl}
+                                        src={`http://localhost:5000${selectedRecord.imageUrl}`}
                                         alt="Full record"
                                         className="w-full h-48 object-cover rounded-md mb-4"
                                     />
@@ -116,7 +116,7 @@ export default function ViewPlantNotesPage() {
                                     {new Date(selectedRecord.date).toLocaleDateString()}
                                 </p>
                                 <p className="text-lg mb-4 whitespace-pre-line">{selectedRecord.observationNote}</p>
-                                <Link to={`/home/${plant.id}/addNote`}>
+                                <Link to={`/home/${id}/addNote`}>
                                 <button
                                     className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"
                                     onClick={() => {
